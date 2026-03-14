@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;NegoBot — Chatbots con IA para tu Negocio&lt;/title&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root {
+  --bg:#050810; --bg2:#080d1a; --blue:#2563ff; --blue-light:#4f85ff;
+  --cyan:#00d4ff; --text:#e8edf8; --muted:#7a8aaa;
+  --border:rgba(255,255,255,0.07); --card:rgba(12,18,32,0.85);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.15}
+
+body::before{content:’’;position:fixed;inset:0;background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.04’/%3E%3C/svg%3E”);pointer-events:none;z-index:9999;opacity:.5}
+
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,255,.05) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,8,16,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(–border)}
+.logo{font-family:‘Syne’,sans-serif;font-weight:800;font-size:1.45rem;letter-spacing:-.5px;color:#fff;text-decoration:none;background:none;border:none;cursor:pointer}
+.logo span{color:var(–blue-light)}
+nav ul{list-style:none;display:flex;gap:2.5rem}
+nav ul a{color:var(–muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+nav ul a:hover{color:#fff}
+.nav-cta{background:var(–blue);color:#fff!important;padding:.45rem 1.2rem;border-radius:6px}
+.nav-cta:hover{background:var(–blue-light)!important}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 5% 80px;overflow:hidden}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:900px;height:900px;background:radial-gradient(ellipse at center,rgba(37,99,255,.18) 0%,transparent 65%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:860px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,255,.12);border:1px solid rgba(37,99,255,.3);border-radius:999px;padding:.35rem 1rem;font-size:.78rem;font-weight:600;color:var(–blue-light);letter-spacing:.8px;text-transform:uppercase;margin-bottom:2rem}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(–cyan);box-shadow:0 0 8px var(–cyan);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.8rem,6vw,5.2rem);font-weight:800;letter-spacing:-2px;margin-bottom:1.5rem}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(–blue-light),var(–cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(–muted);max-width:600px;margin:0 auto 2.8rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(–blue);color:#fff;border:none;padding:.85rem 2.2rem;border-radius:8px;font-family:‘Syne’,sans-serif;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(37,99,255,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(37,99,255,.6)}
+.btn-secondary{background:transparent;color:var(–text);border:1px solid var(–border);padding:.85rem 2rem;border-radius:8px;font-family:‘Syne’,sans-serif;font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:background .2s,transform .2s}
+.btn-secondary:hover{background:var(–border);transform:translateY(-2px)}
+.hero-platforms{margin-top:3.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.platform-chip{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(–card);border:1px solid var(–border);border-radius:999px;font-size:.82rem;color:var(–muted);font-weight:500}
+.platform-chip svg{width:16px;height:16px}
+.wa{color:#25d366}.ig{color:#e1306c}
+
+/* SECTIONS */
+section{padding:100px 5%}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–blue-light);margin-bottom:1rem}
+.section-title{font-size:clamp(1.9rem,3.5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:1.2rem}
+.section-sub{color:var(–muted);max-width:540px;font-size:1.05rem;font-weight:300}
+.section-header{margin-bottom:4rem}
+
+/* BENEFICIOS */
+#beneficios{background:var(–bg2)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5px;border:1px solid var(–border);border-radius:16px;overflow:hidden}
+.benefit-card{background:var(–card);padding:2.5rem;border:1px solid var(–border);transition:background .25s;position:relative;overflow:hidden}
+.benefit-card::before{content:’’;position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(–blue),var(–cyan));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.benefit-card:hover{background:rgba(37,99,255,.05)}
+.benefit-card:hover::before{transform:scaleX(1)}
+.benefit-icon{width:48px;height:48px;background:rgba(37,99,255,.12);border:1px solid rgba(37,99,255,.25);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.3rem}
+.benefit-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+.benefit-card p{color:var(–muted);font-size:.9rem;line-height:1.6;font-weight:300}
+
+/* COMO FUNCIONA */
+.steps-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;position:relative}
+.steps-container::before{content:’’;position:absolute;top:38px;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,var(–blue),transparent)}
+.step{background:var(–card);border:1px solid var(–border);border-radius:16px;padding:2.5rem;text-align:center;transition:transform .25s,border-color .25s}
+.step:hover{transform:translateY(-6px);border-color:rgba(37,99,255,.35)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(–blue),var(–blue-light));font-family:‘Syne’,sans-serif;font-weight:800;font-size:1.3rem;color:#fff;margin-bottom:1.5rem;box-shadow:0 0 25px rgba(37,99,255,.4)}
+.step h3{font-size:1.1rem;margin-bottom:.7rem}
+.step p{color:var(–muted);font-size:.9rem;font-weight:300}
+
+/* DEMO */
+#demo{background:var(–bg2)}
+.demo-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.demo-feature{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.4rem}
+.demo-feature-icon{width:36px;height:36px;min-width:36px;background:rgba(37,99,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;margin-top:2px}
+.demo-feature h4{font-size:.95rem;margin-bottom:.2rem;font-weight:600}
+.demo-feature p{font-size:.85rem;color:var(–muted);font-weight:300}
+
+/* CHAT */
+.chat-widget{background:#0e1420;border:1px solid var(–border);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.chat-header{background:#111827;padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(–border)}
+.chat-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#e1306c,#f7a928);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.chat-info h4{font-size:.9rem;font-weight:700}
+.chat-info span{font-size:.73rem;color:#25d366;display:flex;align-items:center;gap:.3rem}
+.chat-info span::before{content:’’;width:6px;height:6px;border-radius:50%;background:#25d366;display:inline-block}
+.chat-body{padding:1.5rem;display:flex;flex-direction:column;gap:.9rem;height:340px;overflow-y:auto}
+.msg{max-width:80%;padding:.7rem 1rem;border-radius:12px;font-size:.85rem;line-height:1.5}
+.msg-bot{background:#1a2235;border:1px solid var(–border);align-self:flex-start;border-bottom-left-radius:3px}
+.msg-user{background:var(–blue);align-self:flex-end;border-bottom-right-radius:3px;color:#fff}
+.msg-time{font-size:.68rem;color:var(–muted);margin-top:.1rem;text-align:right}
+.msg-time.left{text-align:left}
+.quick-replies{display:flex;flex-wrap:wrap;gap:.5rem;padding:.75rem 1.4rem;border-top:1px solid var(–border);background:#0e1420}
+.qr-chip{background:rgba(37,99,255,.12);border:1px solid rgba(37,99,255,.25);color:var(–blue-light);font-size:.75rem;font-weight:600;padding:.3rem .8rem;border-radius:999px;cursor:pointer;transition:background .2s;font-family:‘DM Sans’,sans-serif;white-space:nowrap}
+.qr-chip:hover{background:rgba(37,99,255,.3)}
+.chat-input{border-top:1px solid var(–border);padding:1rem 1.4rem;display:flex;gap:.8rem;background:#111827;align-items:center}
+.chat-input input{flex:1;background:#0e1420;border:1px solid var(–border);border-radius:8px;padding:.6rem 1rem;color:var(–text);font-family:‘DM Sans’,sans-serif;font-size:.85rem;outline:none}
+.chat-input input:focus{border-color:rgba(37,99,255,.4)}
+.send-btn{width:36px;height:36px;background:var(–blue);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.send-btn:hover{background:var(–blue-light)}
+
+/* TYPING */
+.typing{display:flex;gap:4px;align-items:center;padding:.6rem .9rem}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(–muted);animation:tb 1.2s infinite ease-in-out}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes tb{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+
+/* CASOS */
+.casos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.caso-card{background:var(–card);border:1px solid var(–border);border-radius:16px;padding:2rem;display:flex;gap:1.2rem;align-items:flex-start;transition:transform .25s,border-color .25s}
+.caso-card:hover{transform:translateY(-4px);border-color:rgba(37,99,255,.3)}
+.caso-emoji{font-size:2.4rem;line-height:1;flex-shrink:0}
+.caso-card h3{font-size:1.05rem;margin-bottom:.4rem}
+.caso-card p{font-size:.875rem;color:var(–muted);font-weight:300;line-height:1.55}
+.caso-tag{display:inline-block;margin-top:.7rem;padding:.2rem .7rem;background:rgba(37,99,255,.1);border:1px solid rgba(37,99,255,.2);border-radius:999px;font-size:.72rem;color:var(–blue-light);font-weight:600;letter-spacing:.5px}
+
+/* PRECIOS */
+#precios{background:var(–bg2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+.plan-card{background:var(–card);border:1px solid var(–border);border-radius:20px;padding:2.5rem;position:relative;transition:transform .25s}
+.plan-card:hover{transform:translateY(-6px)}
+.plan-card.featured{border-color:rgba(37,99,255,.5);background:rgba(37,99,255,.07);box-shadow:0 0 50px rgba(37,99,255,.15)}
+.featured-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(–blue),var(–blue-light));color:#fff;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.3rem 1rem;border-radius:999px;white-space:nowrap}
+.plan-name{font-family:‘Syne’,sans-serif;font-weight:700;font-size:1rem;color:var(–muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:1rem}
+.plan-price{font-family:‘Syne’,sans-serif;font-weight:800;font-size:3rem;letter-spacing:-2px;margin-bottom:.2rem}
+.plan-price sup{font-size:1.3rem;vertical-align:super;letter-spacing:0;font-weight:600}
+.plan-period{font-size:.85rem;color:var(–muted);margin-bottom:2rem}
+.plan-divider{height:1px;background:var(–border);margin-bottom:1.8rem}
+.plan-features{list-style:none;margin-bottom:2.2rem}
+.plan-features li{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.9rem;font-size:.875rem;color:var(–muted);font-weight:300}
+.plan-features li::before{content:‘✓’;color:var(–blue-light);font-weight:700;font-size:.85rem;flex-shrink:0;margin-top:1px}
+.plan-btn{width:100%;padding:.85rem;border-radius:10px;font-family:‘Syne’,sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:center;border:none;display:block}
+.plan-btn.primary{background:var(–blue);color:#fff;box-shadow:0 0 25px rgba(37,99,255,.3)}
+.plan-btn.primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(37,99,255,.5)}
+.plan-btn.outline{background:transparent;border:1px solid var(–border)!important;color:var(–text)}
+.plan-btn.outline:hover{background:var(–border);transform:translateY(-2px)}
+
+/* CONTACTO */
+#contacto{position:relative}
+.contact-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.contact-wrap .section-sub{margin:0 auto 3rem}
+.contact-cards{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;max-width:600px;width:100%}
+.contact-card{background:var(–card);border:1px solid var(–border);border-radius:16px;padding:1.8rem 2rem;display:flex;align-items:center;gap:1.4rem;text-decoration:none;transition:border-color .25s,transform .25s,background .25s;flex:1;min-width:240px}
+.contact-card:hover{border-color:rgba(37,99,255,.4);transform:translateY(-3px);background:rgba(37,99,255,.06)}
+.contact-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.email-icon{background:rgba(37,99,255,.15);border:1px solid rgba(37,99,255,.25)}
+.ig-icon{background:rgba(225,48,108,.12);border:1px solid rgba(225,48,108,.25)}
+.contact-card-label{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);margin-bottom:.3rem}
+.contact-card-value{font-family:‘Syne’,sans-serif;font-weight:700;font-size:1rem;color:var(–text)}
+.contact-card-arrow{margin-left:auto;color:var(–muted);transition:transform .2s,color .2s;flex-shrink:0}
+.contact-card:hover .contact-card-arrow{transform:translateX(4px);color:var(–blue-light)}
+
+/* FOOTER */
+footer{background:var(–bg2);border-top:1px solid var(–border);padding:3rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.82rem;color:var(–muted)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.82rem;color:var(–muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(–text)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+.demo-layout{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.casos-grid{grid-template-columns:1fr}
+.steps-container::before{display:none}
+nav ul{display:none}
+}
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;nav&gt;
+  &lt;a href=&quot;#hero&quot; class=&quot;logo&quot; onclick=&quot;window.scrollTo({top:0,behavior:'smooth'});return false&quot;&gt;Nego&lt;span&gt;Bot&lt;/span&gt;&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('beneficios').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Beneficios&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Cómo funciona&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('precios').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Precios&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'});return false&quot; class=&quot;nav-cta&quot;&gt;Contáctenos&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- HERO --&gt;
+
+&lt;section id=&quot;hero&quot;&gt;
+  &lt;div class=&quot;grid-bg&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;hero-glow&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;hero-inner&quot;&gt;
+    &lt;div class=&quot;badge&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Impulsado por Inteligencia Artificial&lt;/div&gt;
+    &lt;h1&gt;Automatiza tu&lt;br&gt;negocio con &lt;em&gt;IA&lt;/em&gt;&lt;/h1&gt;
+    &lt;p class=&quot;hero-sub&quot;&gt;Chatbots inteligentes para WhatsApp e Instagram que responden clientes 24/7 y convierten mensajes en ventas.&lt;/p&gt;
+    &lt;div class=&quot;hero-actions&quot;&gt;
+      &lt;button class=&quot;btn-primary&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'})&quot;&gt;✉️ Contáctenos&lt;/button&gt;
+      &lt;button class=&quot;btn-secondary&quot; onclick=&quot;document.getElementById('demo').scrollIntoView({behavior:'smooth'})&quot;&gt;Ver demo en vivo
+        &lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot;&gt;&lt;path d=&quot;M5 12h14M12 5l7 7-7 7&quot;/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;hero-platforms&quot;&gt;
+      &lt;div class=&quot;platform-chip&quot;&gt;
+        &lt;svg class=&quot;wa&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z&quot;/&gt;&lt;/svg&gt;
+        WhatsApp Business
+      &lt;/div&gt;
+      &lt;div class=&quot;platform-chip&quot;&gt;
+        &lt;svg class=&quot;ig&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z&quot;/&gt;&lt;/svg&gt;
+        Instagram DM
+      &lt;/div&gt;
+      &lt;div class=&quot;platform-chip&quot;&gt;
+        &lt;svg style=&quot;color:#00d4ff&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;/&gt;&lt;path d=&quot;M12 8v4l3 3&quot;/&gt;&lt;/svg&gt;
+        Disponible 24/7
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- BENEFICIOS --&gt;
+
+&lt;section id=&quot;beneficios&quot;&gt;
+  &lt;div class=&quot;section-header reveal&quot;&gt;
+    &lt;p class=&quot;section-label&quot;&gt;Por qué NegoBot&lt;/p&gt;
+    &lt;h2 class=&quot;section-title&quot;&gt;Tu negocio siempre activo,&lt;br&gt;sin esfuerzo extra&lt;/h2&gt;
+    &lt;p class=&quot;section-sub&quot;&gt;Deja que la IA se encargue de la atención al cliente mientras tú te enfocas en crecer.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;benefits-grid reveal&quot;&gt;
+    &lt;div class=&quot;benefit-card&quot;&gt;
+      &lt;div class=&quot;benefit-icon&quot;&gt;⚡&lt;/div&gt;
+      &lt;h3&gt;Responde 24/7 automáticamente&lt;/h3&gt;
+      &lt;p&gt;Sin horarios ni descansos. El bot responde en segundos, cualquier día y a cualquier hora.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;benefit-card&quot;&gt;
+      &lt;div class=&quot;benefit-icon&quot;&gt;💰&lt;/div&gt;
+      &lt;h3&gt;Reduce costos de atención&lt;/h3&gt;
+      &lt;p&gt;Automatiza tareas repetitivas y reduce hasta 70% del tiempo invertido en atención al cliente.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;benefit-card&quot;&gt;
+      &lt;div class=&quot;benefit-icon&quot;&gt;📈&lt;/div&gt;
+      &lt;h3&gt;Convierte mensajes en ventas&lt;/h3&gt;
+      &lt;p&gt;El bot detecta intenciones de compra y guía al cliente para cerrar ventas automáticamente.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;benefit-card&quot;&gt;
+      &lt;div class=&quot;benefit-icon&quot;&gt;🗓️&lt;/div&gt;
+      &lt;h3&gt;Citas y FAQs automatizadas&lt;/h3&gt;
+      &lt;p&gt;Agenda citas, responde preguntas frecuentes y gestiona reservas sin intervención humana.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- CÓMO FUNCIONA --&gt;
+
+&lt;section id=&quot;como-funciona&quot;&gt;
+  &lt;div class=&quot;section-header reveal&quot; style=&quot;text-align:center&quot;&gt;
+    &lt;p class=&quot;section-label&quot;&gt;El proceso&lt;/p&gt;
+    &lt;h2 class=&quot;section-title&quot;&gt;Listo en 3 pasos simples&lt;/h2&gt;
+    &lt;p class=&quot;section-sub&quot; style=&quot;margin:0 auto&quot;&gt;Configuramos todo por ti. No necesitas conocimientos técnicos.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;steps-container reveal&quot;&gt;
+    &lt;div class=&quot;step&quot;&gt;
+      &lt;div class=&quot;step-num&quot;&gt;1&lt;/div&gt;
+      &lt;h3&gt;Conectamos el chatbot&lt;/h3&gt;
+      &lt;p&gt;Integramos el bot directamente a tu WhatsApp Business e Instagram en menos de 24 horas.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;step&quot;&gt;
+      &lt;div class=&quot;step-num&quot;&gt;2&lt;/div&gt;
+      &lt;h3&gt;Entrenamos con tu info&lt;/h3&gt;
+      &lt;p&gt;Cargamos tu menú, precios, horarios, ubicación y toda la información de tu negocio.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;step&quot;&gt;
+      &lt;div class=&quot;step-num&quot;&gt;3&lt;/div&gt;
+      &lt;h3&gt;El bot trabaja por ti&lt;/h3&gt;
+      &lt;p&gt;Desde ese momento, el bot responde, reserva mesas y toma pedidos de forma autónoma.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- DEMO --&gt;
+
+&lt;section id=&quot;demo&quot;&gt;
+  &lt;div class=&quot;demo-layout&quot;&gt;
+    &lt;div class=&quot;demo-info reveal&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Demo en vivo&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Habla con el bot ahora mismo&lt;/h2&gt;
+      &lt;p class=&quot;section-sub&quot; style=&quot;margin-bottom:2rem&quot;&gt;Prueba el bot de un restaurante. Pregunta por el menú, reserva una mesa o haz un pedido a domicilio.&lt;/p&gt;
+      &lt;div class=&quot;demo-feature&quot;&gt;
+        &lt;div class=&quot;demo-feature-icon&quot;&gt;🍽️&lt;/div&gt;
+        &lt;div&gt;&lt;h4&gt;Menú inteligente&lt;/h4&gt;&lt;p&gt;El bot conoce cada platillo, precio e ingrediente del restaurante.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;demo-feature&quot;&gt;
+        &lt;div class=&quot;demo-feature-icon&quot;&gt;📅&lt;/div&gt;
+        &lt;div&gt;&lt;h4&gt;Reservaciones al instante&lt;/h4&gt;&lt;p&gt;Gestiona mesas y confirma reservas automáticamente.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;demo-feature&quot;&gt;
+        &lt;div class=&quot;demo-feature-icon&quot;&gt;🛵&lt;/div&gt;
+        &lt;div&gt;&lt;h4&gt;Pedidos a domicilio&lt;/h4&gt;&lt;p&gt;Toma el pedido completo y genera el resumen con total.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;reveal&quot;&gt;
+      &lt;div class=&quot;chat-widget&quot;&gt;
+        &lt;div class=&quot;chat-header&quot;&gt;
+          &lt;div class=&quot;chat-avatar&quot;&gt;🍕&lt;/div&gt;
+          &lt;div class=&quot;chat-info&quot;&gt;
+            &lt;h4&gt;La Trattoria — Bot IA&lt;/h4&gt;
+            &lt;span&gt;En línea ahora&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chat-body&quot; id=&quot;chatBody&quot;&gt;
+          &lt;div class=&quot;msg msg-bot&quot;&gt;¡Hola! 👋 Bienvenido a &lt;strong&gt;La Trattoria&lt;/strong&gt;. Soy tu asistente virtual.&lt;/div&gt;
+          &lt;div class=&quot;msg-time left&quot;&gt;Ahora&lt;/div&gt;
+          &lt;div class=&quot;msg msg-bot&quot;&gt;Puedo mostrarte el menú, hacer una reservación o tomar tu pedido a domicilio 🍕&lt;/div&gt;
+          &lt;div class=&quot;msg-time left&quot;&gt;Ahora&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;quick-replies&quot; id=&quot;quickReplies&quot;&gt;
+          &lt;span class=&quot;qr-chip&quot; onclick=&quot;quickSend('Ver el menú')&quot;&gt;🍽️ Ver menú&lt;/span&gt;
+          &lt;span class=&quot;qr-chip&quot; onclick=&quot;quickSend('Quiero reservar una mesa')&quot;&gt;📅 Reservar&lt;/span&gt;
+          &lt;span class=&quot;qr-chip&quot; onclick=&quot;quickSend('Quiero pedir a domicilio')&quot;&gt;🛵 Domicilio&lt;/span&gt;
+          &lt;span class=&quot;qr-chip&quot; onclick=&quot;quickSend('¿Cuáles son sus horarios?')&quot;&gt;🕐 Horarios&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chat-input&quot;&gt;
+          &lt;input type=&quot;text&quot; id=&quot;chatInput&quot; placeholder=&quot;Escribe tu mensaje...&quot;&gt;
+          &lt;button class=&quot;send-btn&quot; onclick=&quot;sendMessage()&quot;&gt;
+            &lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#fff&quot; stroke-width=&quot;2.5&quot;&gt;&lt;path d=&quot;M5 12h14M12 5l7 7-7 7&quot;/&gt;&lt;/svg&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- CASOS --&gt;
+
+&lt;section id=&quot;casos&quot;&gt;
+  &lt;div class=&quot;section-header reveal&quot; style=&quot;text-align:center&quot;&gt;
+    &lt;p class=&quot;section-label&quot;&gt;Casos de uso&lt;/p&gt;
+    &lt;h2 class=&quot;section-title&quot;&gt;Funciona para tu industria&lt;/h2&gt;
+    &lt;p class=&quot;section-sub&quot; style=&quot;margin:0 auto&quot;&gt;NegoBot se adapta a cualquier tipo de negocio con flujos personalizados.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;casos-grid reveal&quot;&gt;
+    &lt;div class=&quot;caso-card&quot;&gt;&lt;div class=&quot;caso-emoji&quot;&gt;🍕&lt;/div&gt;&lt;div&gt;&lt;h3&gt;Restaurantes&lt;/h3&gt;&lt;p&gt;Toma pedidos, reserva mesas y gestiona pedidos a domicilio automáticamente.&lt;/p&gt;&lt;span class=&quot;caso-tag&quot;&gt;Reservas · Pedidos · Menú&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;caso-card&quot;&gt;&lt;div class=&quot;caso-emoji&quot;&gt;🏥&lt;/div&gt;&lt;div&gt;&lt;h3&gt;Clínicas y Consultorios&lt;/h3&gt;&lt;p&gt;Agenda citas, envía recordatorios y responde preguntas sobre servicios.&lt;/p&gt;&lt;span class=&quot;caso-tag&quot;&gt;Citas · Recordatorios · FAQ&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;caso-card&quot;&gt;&lt;div class=&quot;caso-emoji&quot;&gt;💇&lt;/div&gt;&lt;div&gt;&lt;h3&gt;Salones de Belleza&lt;/h3&gt;&lt;p&gt;Reserva turnos, muestra disponibilidad y gestiona confirmaciones automáticamente.&lt;/p&gt;&lt;span class=&quot;caso-tag&quot;&gt;Turnos · Catálogo · Pagos&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;caso-card&quot;&gt;&lt;div class=&quot;caso-emoji&quot;&gt;🛍️&lt;/div&gt;&lt;div&gt;&lt;h3&gt;Tiendas Online&lt;/h3&gt;&lt;p&gt;Presenta catálogo, responde sobre stock y envíos, toma pedidos automáticamente.&lt;/p&gt;&lt;span class=&quot;caso-tag&quot;&gt;Catálogo · Ventas · Soporte&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- PRECIOS --&gt;
+
+&lt;section id=&quot;precios&quot;&gt;
+  &lt;div class=&quot;section-header reveal&quot; style=&quot;text-align:center&quot;&gt;
+    &lt;p class=&quot;section-label&quot;&gt;Planes y precios&lt;/p&gt;
+    &lt;h2 class=&quot;section-title&quot;&gt;El plan perfecto para&lt;br&gt;tu negocio&lt;/h2&gt;
+    &lt;p class=&quot;section-sub&quot; style=&quot;margin:0 auto&quot;&gt;Sin contratos largos. Cancela cuando quieras.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pricing-grid reveal&quot;&gt;
+    &lt;div class=&quot;plan-card&quot;&gt;
+      &lt;div class=&quot;plan-name&quot;&gt;Básico&lt;/div&gt;
+      &lt;div class=&quot;plan-price&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;990&lt;/div&gt;
+      &lt;div class=&quot;plan-period&quot;&gt;MXN / mes&lt;/div&gt;
+      &lt;div class=&quot;plan-divider&quot;&gt;&lt;/div&gt;
+      &lt;ul class=&quot;plan-features&quot;&gt;
+        &lt;li&gt;1 canal (WhatsApp o Instagram)&lt;/li&gt;
+        &lt;li&gt;Hasta 500 conversaciones/mes&lt;/li&gt;
+        &lt;li&gt;Respuestas a preguntas frecuentes&lt;/li&gt;
+        &lt;li&gt;Panel de estadísticas básico&lt;/li&gt;
+        &lt;li&gt;Soporte por correo&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;plan-btn outline&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'})&quot;&gt;Empezar ahora&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;plan-card featured&quot;&gt;
+      &lt;div class=&quot;featured-badge&quot;&gt;⭐ Más popular&lt;/div&gt;
+      &lt;div class=&quot;plan-name&quot;&gt;Negocio&lt;/div&gt;
+      &lt;div class=&quot;plan-price&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;1,990&lt;/div&gt;
+      &lt;div class=&quot;plan-period&quot;&gt;MXN / mes&lt;/div&gt;
+      &lt;div class=&quot;plan-divider&quot;&gt;&lt;/div&gt;
+      &lt;ul class=&quot;plan-features&quot;&gt;
+        &lt;li&gt;WhatsApp + Instagram incluidos&lt;/li&gt;
+        &lt;li&gt;Conversaciones ilimitadas&lt;/li&gt;
+        &lt;li&gt;Agendamiento automático&lt;/li&gt;
+        &lt;li&gt;Flujos de ventas personalizados&lt;/li&gt;
+        &lt;li&gt;Dashboard avanzado con analítica&lt;/li&gt;
+        &lt;li&gt;Soporte prioritario por chat&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;plan-btn primary&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'})&quot;&gt;Contáctenos&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;plan-card&quot;&gt;
+      &lt;div class=&quot;plan-name&quot;&gt;Premium&lt;/div&gt;
+      &lt;div class=&quot;plan-price&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;3,990&lt;/div&gt;
+      &lt;div class=&quot;plan-period&quot;&gt;MXN / mes&lt;/div&gt;
+      &lt;div class=&quot;plan-divider&quot;&gt;&lt;/div&gt;
+      &lt;ul class=&quot;plan-features&quot;&gt;
+        &lt;li&gt;Todo lo del plan Negocio&lt;/li&gt;
+        &lt;li&gt;Integración con CRM y sistemas&lt;/li&gt;
+        &lt;li&gt;Múltiples agentes y negocios&lt;/li&gt;
+        &lt;li&gt;IA con entrenamiento avanzado&lt;/li&gt;
+        &lt;li&gt;API personalizada disponible&lt;/li&gt;
+        &lt;li&gt;Soporte dedicado 24/7&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;plan-btn outline&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'})&quot;&gt;Contáctenos&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- CONTACTO --&gt;
+
+&lt;section id=&quot;contacto&quot;&gt;
+  &lt;div class=&quot;contact-wrap reveal&quot;&gt;
+    &lt;p class=&quot;section-label&quot;&gt;Contáctenos&lt;/p&gt;
+    &lt;h2 class=&quot;section-title&quot;&gt;¿Listo para automatizar&lt;br&gt;tu negocio?&lt;/h2&gt;
+    &lt;p class=&quot;section-sub&quot;&gt;Escríbenos directamente. Te respondemos en menos de 2 horas con una demo personalizada para tu negocio.&lt;/p&gt;
+    &lt;div class=&quot;contact-cards&quot;&gt;
+      &lt;a href=&quot;/cdn-cgi/l/email-protection#f39d96949c919c87b392879c9e9a909e929a9fdd909c9e&quot; class=&quot;contact-card&quot;&gt;
+        &lt;div class=&quot;contact-card-icon email-icon&quot;&gt;✉️&lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;contact-card-label&quot;&gt;Correo electrónico&lt;/div&gt;
+          &lt;div class=&quot;contact-card-value&quot;&gt;&lt;span class=&quot;__cf_email__&quot; data-cfemail=&quot;7719121018151803371603181a1e141a161e1b5914181a&quot;&gt;[email&amp;#160;protected]&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;svg class=&quot;contact-card-arrow&quot; width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M5 12h14M12 5l7 7-7 7&quot;/&gt;&lt;/svg&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;https://instagram.com/negobot.mx&quot; target=&quot;_blank&quot; class=&quot;contact-card&quot;&gt;
+        &lt;div class=&quot;contact-card-icon ig-icon&quot;&gt;
+          &lt;svg width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;#e1306c&quot;&gt;&lt;path d=&quot;M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z&quot;/&gt;&lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;contact-card-label&quot;&gt;Instagram&lt;/div&gt;
+          &lt;div class=&quot;contact-card-value&quot;&gt;@negobot.mx&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;svg class=&quot;contact-card-arrow&quot; width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M5 12h14M12 5l7 7-7 7&quot;/&gt;&lt;/svg&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- FOOTER --&gt;
+
+&lt;footer&gt;
+  &lt;div&gt;
+    &lt;a href=&quot;#hero&quot; class=&quot;logo&quot; style=&quot;font-size:1.2rem&quot;&gt;Nego&lt;span&gt;Bot&lt;/span&gt;&lt;/a&gt;
+    &lt;p style=&quot;margin-top:.4rem&quot;&gt;© 2025 NegoBot. Todos los derechos reservados.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;ul class=&quot;footer-links&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('beneficios').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Beneficios&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('precios').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Precios&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot; onclick=&quot;document.getElementById('contacto').scrollIntoView({behavior:'smooth'});return false&quot;&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://instagram.com/negobot.mx&quot; target=&quot;_blank&quot;&gt;@negobot.mx&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/footer&gt;
+
+&lt;script data-cfasync=&quot;false&quot; src=&quot;/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js&quot;&gt;&lt;/script&gt;&lt;script&gt;
+
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries =&gt; {
+entries.forEach(e =&gt; { if (e.isIntersecting) e.target.classList.add(‘visible’); });
+}, { threshold: 0.1 });
+document.querySelectorAll(’.reveal’).forEach(el =&gt; obs.observe(el));
+
+// RESTAURANT CHATBOT
+const menu = {
+entradas: [
+{ name:‘Bruschetta al tomate’, price:89, desc:‘Pan tostado con tomate fresco, ajo y albahaca’ },
+{ name:‘Tabla de quesos’, price:145, desc:‘Quesos italianos con mermelada de higo’ },
+{ name:‘Carpaccio de res’, price:160, desc:‘Res en láminas finas con rúcula y parmesano’ },
+],
+pastas: [
+{ name:‘Spaghetti Bolognesa’, price:165, desc:‘Salsa de carne con tomate y hierbas italianas’ },
+{ name:‘Fettuccine Alfredo’, price:155, desc:‘Crema, mantequilla y parmesano’ },
+{ name:‘Penne Arrabbiata’, price:148, desc:‘Salsa de tomate picante con ajo y albahaca’ },
+],
+pizzas: [
+{ name:‘Pizza Margherita’, price:185, desc:‘Salsa de tomate, mozzarella y albahaca fresca’ },
+{ name:‘Pizza Quattro Formaggi’, price:220, desc:‘Mozzarella, gorgonzola, parmesano y brie’ },
+{ name:‘Pizza Pepperoni’, price:210, desc:‘Pepperoni, mozzarella y orégano’ },
+],
+postres: [
+{ name:‘Tiramisú’, price:95, desc:‘Clásico italiano con mascarpone y café’ },
+{ name:‘Panna cotta’, price:85, desc:‘Con coulis de frutos rojos’ },
+],
+bebidas: [
+{ name:‘Agua mineral’, price:35 },
+{ name:‘Limonada italiana’, price:55 },
+{ name:‘Vino de la casa’, price:95, desc:‘Copa de tinto o blanco’ },
+]
+};
+
+let cart=[], awaitRes=false, rStep=0, res={};
+let awaitOrder=false, oStep=0, oCat=null;
+
+function getTime(){
+const d=new Date(); let h=d.getHours(),m=String(d.getMinutes()).padStart(2,‘0’);
+const ap=h&gt;=12?‘PM’:‘AM’; h=h%12||12; return h+’:’+m+’ ’+ap;
+}
+
+function addMsg(html,isUser){
+const body=document.getElementById(‘chatBody’);
+const el=document.createElement(‘div’);
+el.className=‘msg ‘+(isUser?‘msg-user’:‘msg-bot’);
+el.innerHTML=html;
+body.appendChild(el);
+const t=document.createElement(‘div’);
+t.className=‘msg-time’+(isUser?’’:’ left’);
+t.textContent=getTime();
+body.appendChild(t);
+body.scrollTop=body.scrollHeight;
+}
+
+function showTyping(){
+const body=document.getElementById(‘chatBody’);
+const el=document.createElement(‘div’);
+el.className=‘msg msg-bot’; el.id=‘typ’;
+el.innerHTML=’&lt;div class=&quot;typing&quot;&gt;&lt;div class=&quot;typing-dot&quot;&gt;&lt;/div&gt;&lt;div class=&quot;typing-dot&quot;&gt;&lt;/div&gt;&lt;div class=&quot;typing-dot&quot;&gt;&lt;/div&gt;&lt;/div&gt;’;
+body.appendChild(el); body.scrollTop=body.scrollHeight;
+}
+
+function botSay(html,delay=1200){
+showTyping();
+setTimeout(()=&gt;{
+const el=document.getElementById(‘typ’);
+if(el){el.innerHTML=html;el.id=’’;document.getElementById(‘chatBody’).scrollTop=99999;}
+},delay);
+}
+
+function setQR(chips){
+const qr=document.getElementById(‘quickReplies’);
+qr.innerHTML=chips.map(c=&gt;`&lt;span class=&quot;qr-chip&quot; onclick=&quot;quickSend('${c.replace(/'/g,&quot;\\'&quot;)}')&quot;&gt; ${c}&lt;/span&gt;`).join(’’);
+}
+
+function menuText(cat){
+return menu[cat].map((i,n)=&gt;`${n+1}. &lt;strong&gt;${i.name}&lt;/strong&gt; — $${i.price}${i.desc?'&lt;br&gt;&lt;span style=&quot;color:var(--muted);font-size:.8rem&quot;&gt;'+i.desc+'&lt;/span&gt;':''}`).join(’&lt;br&gt;&lt;br&gt;’);
+}
+
+function findItem(t){
+return Object.values(menu).flat().find(i=&gt;t.includes(i.name.toLowerCase())||i.name.toLowerCase().split(’ ’).some(w=&gt;w.length&gt;4&amp;&amp;t.includes(w)));
+}
+
+function finishOrder(){
+if(!cart.length){botSay(‘No has agregado nada todavía. ¿Con qué empezamos? 😊’,700);setQR([‘Ver pastas’,‘Ver pizzas’,‘Ver entradas’,‘Ver bebidas’]);return;}
+const total=cart.reduce((s,i)=&gt;s+i.price,0);
+const list=cart.map(i=&gt;`• ${i.name} — $${i.price}`).join(’&lt;br&gt;’);
+awaitOrder=false;oStep=0;cart=[];
+botSay(`🎉 &lt;strong&gt;¡Pedido confirmado!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;${list}&lt;br&gt;&lt;br&gt;💰 &lt;strong&gt;Total: $${total} MXN&lt;/strong&gt;&lt;br&gt;🛵 Tiempo estimado: 35–45 min&lt;br&gt;&lt;br&gt;Un agente te contactará para confirmar tu dirección. ¡Gracias! 🍕`,1500);
+setQR([‘Ver el menú’,‘Reservar una mesa’,’¿Cuáles son sus horarios?’]);
+}
+
+function process(text){
+const t=text.toLowerCase();
+
+if(awaitRes){
+if(rStep===1){res.name=text;rStep=2;botSay(`Perfecto, &lt;strong&gt;${text}&lt;/strong&gt;. ¿Para cuántas personas? 👥`,900);setQR([‘2 personas’,‘3–4 personas’,‘5–6 personas’,‘Más de 6’]);return;}
+if(rStep===2){res.guests=text;rStep=3;botSay(’¿Qué fecha y hora? Ej: &lt;em&gt;Sábado 7pm&lt;/em&gt; 📅’,900);setQR([‘Hoy 8pm’,‘Mañana 2pm’,‘Este sábado 7pm’,‘Este domingo 3pm’]);return;}
+if(rStep===3){
+res.date=text;awaitRes=false;rStep=0;
+botSay(`✅ &lt;strong&gt;¡Reservación confirmada!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;👤 ${res.name}&lt;br&gt;👥 ${res.guests}&lt;br&gt;📅 ${res.date}&lt;br&gt;📍 Av. Insurgentes Sur 1234, CDMX&lt;br&gt;&lt;br&gt;¡Te esperamos! 😊`,1300);
+setQR([‘Ver el menú’,‘Pedir a domicilio’,‘Muchas gracias’]);return;
+}
+}
+
+if(awaitOrder){
+if(oStep===1){
+if(t.includes(‘entra’)){oCat=‘entradas’;oStep=2;botSay(‘🥗 &lt;strong&gt;Entradas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘entradas’)+’&lt;br&gt;&lt;br&gt;¿Cuál quieres?’,1100);setQR(menu.entradas.map(i=&gt;i.name));return;}
+if(t.includes(‘pasta’)){oCat=‘pastas’;oStep=2;botSay(‘🍝 &lt;strong&gt;Pastas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘pastas’)+’&lt;br&gt;&lt;br&gt;¿Cuál te llevas?’,1100);setQR(menu.pastas.map(i=&gt;i.name));return;}
+if(t.includes(‘pizza’)){oCat=‘pizzas’;oStep=2;botSay(‘🍕 &lt;strong&gt;Pizzas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘pizzas’)+’&lt;br&gt;&lt;br&gt;¿Cuál agregas?’,1100);setQR(menu.pizzas.map(i=&gt;i.name));return;}
+if(t.includes(‘postre’)){oCat=‘postres’;oStep=2;botSay(‘🍮 &lt;strong&gt;Postres:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘postres’),1000);setQR(menu.postres.map(i=&gt;i.name));return;}
+if(t.includes(‘bebida’)||t.includes(‘tomar’)){oCat=‘bebidas’;oStep=2;botSay(‘🥂 &lt;strong&gt;Bebidas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘bebidas’),1000);setQR(menu.bebidas.map(i=&gt;i.name));return;}
+if(t.match(/confirm|listo|eso es todo|ya está/)){finishOrder();return;}
+}
+if(oStep===2){
+const found=findItem(t);
+if(found){
+cart.push(found);oStep=1;
+const total=cart.reduce((s,i)=&gt;s+i.price,0);
+botSay(`✅ &lt;strong&gt;${found.name}&lt;/strong&gt; agregado — $${found.price}&lt;br&gt;&lt;br&gt;🛒 ${cart.map(i=&gt;i.name).join(', ')}&lt;br&gt;💰 Subtotal: &lt;strong&gt;$${total}&lt;/strong&gt;&lt;br&gt;&lt;br&gt;¿Quieres algo más?`,900);
+setQR([‘Agregar pizza’,‘Agregar pasta’,‘Agregar postre’,‘Agregar bebida’,‘Confirmar pedido’]);return;
+}
+}
+if(t.match(/confirm|listo|eso es todo|confirmar pedido/)){finishOrder();return;}
+}
+
+if(t.match(/men[uú]|carta|platillo|qu[eé] tienen/)){
+botSay(’¡Claro! Nuestro menú de &lt;strong&gt;La Trattoria&lt;/strong&gt; 🍽️:&lt;br&gt;&lt;br&gt;🥗 Entradas&lt;br&gt;🍝 Pastas&lt;br&gt;🍕 Pizzas&lt;br&gt;🍮 Postres&lt;br&gt;🥂 Bebidas&lt;br&gt;&lt;br&gt;¿De cuál categoría quieres ver precios y detalles?’,1200);
+setQR([‘Ver entradas’,‘Ver pastas’,‘Ver pizzas’,‘Ver postres’,‘Ver bebidas’]);return;
+}
+if(t.match(/ver entra|las entra/)){botSay(‘🥗 &lt;strong&gt;Entradas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘entradas’),1100);setQR([‘Ver pastas’,‘Ver pizzas’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/ver pasta|las pasta/)){botSay(‘🍝 &lt;strong&gt;Pastas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘pastas’),1100);setQR([‘Ver pizzas’,‘Ver postres’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/ver pizza|las pizza/)){botSay(‘🍕 &lt;strong&gt;Pizzas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘pizzas’),1100);setQR([‘Ver pastas’,‘Ver postres’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.includes(‘postre’)){botSay(‘🍮 &lt;strong&gt;Postres:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘postres’),1000);setQR([‘Ver bebidas’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/bebida|tomar/)){botSay(‘🥂 &lt;strong&gt;Bebidas:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;’+menuText(‘bebidas’),1000);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/reserv|mesa|lugar/)){awaitRes=true;rStep=1;botSay(’¡Con gusto! Voy a hacer tu reservación 🗓️&lt;br&gt;¿Me dices tu nombre?’,900);setQR([]);return;}
+if(t.match(/domicilio|a casa|delivery|quiero pedir/)){awaitOrder=true;oStep=1;cart=[];botSay(‘🛵 ¡Perfecto! Pedidos en radio de &lt;strong&gt;5 km&lt;/strong&gt;. Tiempo estimado: &lt;strong&gt;35–45 min&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;¿Con qué empezamos?’,1200);setQR([‘Ver entradas’,‘Ver pastas’,‘Ver pizzas’,‘Ver postres’,‘Ver bebidas’]);return;}
+if(t.match(/horario|hora|abierto|cierra|abre/)){botSay(‘🕐 &lt;strong&gt;Horarios:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;Lun–Vie: 1:00 pm – 10:30 pm&lt;br&gt;Sáb–Dom: 12:00 pm – 11:30 pm&lt;br&gt;&lt;br&gt;¡Te esperamos! 😊’,1000);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’,’¿Dónde están?’]);return;}
+if(t.match(/ubica|d[oó]nde|direcci/)){botSay(‘📍 Estamos en:&lt;br&gt;&lt;strong&gt;Av. Insurgentes Sur 1234, Col. Del Valle, CDMX&lt;/strong&gt;&lt;br&gt;&lt;br&gt;Estacionamiento propio y cerca del Metro Insurgentes 🚇’,1000);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/estacion|parking/)){botSay(‘🚗 ¡Sí! Estacionamiento para 30 autos. Primer turno gratuito con consumo mínimo de $200 😊’,900);setQR([‘Ver el menú’,‘Reservar mesa’]);return;}
+if(t.match(/precio|caro|cuesta|cost/)){botSay(‘💰 Precios desde &lt;strong&gt;$35&lt;/strong&gt; hasta &lt;strong&gt;$220 MXN&lt;/strong&gt;. Ticket promedio por persona: &lt;strong&gt;$250–350 MXN&lt;/strong&gt; 🇮🇹’,1000);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/gracias|perfecto|excelente|genial/)){botSay(’¡Fue un placer atenderte! 😊 Que disfrutes tu comida 🍕’,800);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’]);return;}
+if(t.match(/hola|buenas|hey|buenos/)){botSay(’¡Hola! 👋 Bienvenido a &lt;strong&gt;La Trattoria&lt;/strong&gt;. ¿En qué te puedo ayudar?’,700);setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’,’¿Cuáles son sus horarios?’]);return;}
+
+botSay(‘Puedo ayudarte con el 🍽️ menú, 📅 reservaciones, 🛵 pedidos a domicilio o 🕐 horarios. ¿Qué necesitas?’,1000);
+setQR([‘Ver el menú’,‘Reservar mesa’,‘Pedir a domicilio’,’¿Cuáles son sus horarios?’]);
+}
+
+function quickSend(text){ addMsg(text,true); process(text); }
+function sendMessage(){
+const input=document.getElementById(’chat</pre>
+</body>
+</html>
